@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anzila Laikhuram — Home</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { background-color: #f4f4f4; color: #000; font-family: Arial, sans-serif; margin:0; padding:0; }
+    a { color: #006400; text-decoration: none; font-weight: bold; }
+    a:hover { text-decoration: underline; }
+
+    /* Adjusted container padding for more margin on left and right */
+    .container {
+      width: 98%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-left: 40px;   /* increased from 10px */
+      padding-right: 40px;  /* increased from 10px */
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .top-bar { height: 0.5px; background-color: #006400; width: 96%; margin: 2px auto 12px; }
+    .header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding-bottom:12px; border-bottom:2px solid #006400; }
+    .site-title { font-size:2.4rem; margin:0; }
+    .nav-list { list-style:none; display:flex; gap:20px; padding:0; margin:0; }
+    .nav-list a.active { text-decoration: underline; }
+    .main-content { display:flex; flex-wrap:wrap; margin-top:24px; gap:24px; }
+    .profile-section { flex:0 0 360px; }
+    .profile-photo { width:100%; max-width:360px; height:auto; object-fit:cover; border-radius:0; }
+    .bio-section { flex:1 1 800px; line-height:1.6; font-size:1rem; }
+    .bio-section span{ display:block; margin-bottom:8px; }
+    .divider { border-top:1px solid #ccc; margin:20px 0 12px; }
+    .contact-inline { display:flex; gap:18px; flex-wrap:wrap; font-size:0.95rem; align-items:center; }
+    .contact-inline a { color:#006400; display:flex; gap:8px; align-items:center; text-decoration:none; }
+    .footer { text-align:center; margin-top:36px; padding-top:16px; border-top:2px solid #006400; font-size:0.95rem; }
+
+    @media (max-width:900px) {
+      .main-content { flex-direction:column; align-items:center; }
+      .profile-section, .bio-section { flex:1 1 100%; }
+      .profile-photo { max-width:80%; }
+      .contact-inline { justify-content:center; }
+
+      /* Reduce container padding on smaller screens */
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar"></div>
+
+    <header class="header">
+      <h1 class="site-title">Anzila Laikhuram</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="talks.html">Talks</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <div class="profile-section">
+        <img src="profile.jpg" alt="Anzila Laikhuram" class="profile-photo">
+      </div>
+
+      <div class="bio-section">
+        <span>Hello! I am currently a <strong>Ph.D. candidate in Applied Mathematics</strong> at
+          <a href="https://www.nsysu.edu.tw/en/" target="_blank">National Sun Yat-sen University, Taiwan</a>, enrolled in the
+          <a href="https://ipps.nsysu.edu.tw/en/" target="_blank">International PhD Program for Science (IPPS)</a>, expected to graduate in 2026,
+          under the supervision of <a href="https://jephianlin.github.io/" target="_blank">Jephian C.-H. Lin</a>, Associate Professor,
+          <a href="https://math.nsysu.edu.tw/en/" target="_blank">Department of Applied Mathematics, College of Science, NSYSU</a>.
+
+      I earned an M.Sc. in Mathematics from <a href="https://www.sju.edu.in/" target="_blank">St. Joseph's University, India</a> (2017)
+          and a B.Sc. in Physics, Chemistry, and Mathematics from <a href="https://christuniversity.in/" target="_blank">Christ University, 
+            India</a> (2014).
+
+        Before my Ph.D., I completed formal teaching training and a <strong>Bachelor of Education (B.Ed)</strong>
+          from <a href="https://www.manipuruniv.ac.in/" target="_blank">Manipur University</a> (2025).</span>
+
+        <span>My research focuses on <strong>spectral graph theory, combinatorial matrix theory, and inverse eigenvalue problems of graphs (IEPG)</strong>.
+          I am also interested in extremal spectral graph theory, matrix inertia, algebraic graph invariants, and applications to network analysis.
+          I am currently seeking <strong>postdoctoral positions</strong> and open for collaborations in these areas.</span>
+
+        <div style="height: 80px;"></div>
+        <div class="divider"></div>
+        <div style="height: 30px;"></div>
+
+        <div class="contact-inline">
+          <a href="mailto:angi286@gmail.com"><i class="fas fa-envelope"></i> angi286[at]gmail.com</a>
+          <a href="https://github.com/anzi7" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="Anzi%20cv.pdf" target="_blank"><i class="far fa-file-alt"></i> CV</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Anzila Laikhuram</p>
+    </footer>
+  </div>
+</body>
+</html>
