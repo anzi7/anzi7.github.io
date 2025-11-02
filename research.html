@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research — Anzila Laikhuram</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color:#f4f4f4; color:#000; font-family:Arial, sans-serif; margin:0; padding:0; }
+    a { color:#006400; text-decoration:none; font-weight:bold; }
+    a:hover { text-decoration:underline; }
+
+    /* Adjusted container padding for left and right margins */
+    .container { width:98%; max-width:1600px; margin:0 auto; padding-left:40px; padding-right:40px; padding-top:10px; padding-bottom:10px; }
+
+    .top-bar { height:0.5px; background-color:#006400; width:96%; margin:2px auto 12px; }
+    .header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding-bottom:12px; border-bottom:2px solid #006400; }
+    .site-title { font-size:2.4rem; margin:0; }
+    .nav-list { list-style:none; display:flex; gap:20px; padding:0; margin:0; }
+    .nav-list a.active { text-decoration:underline; }
+    .main-content { line-height:1.6; font-size:1rem; display:flex; flex-direction:column; gap:26px; margin-top:24px; }
+    .section h3 { color:#006400; margin-bottom:10px; font-size:1.3rem; }
+    .section p, .section ul, .section div { margin-bottom:12px; }
+    .list-compact { list-style-type:disc; padding-left:20px; }
+    .pub-item { margin-bottom:12px; }
+    .footer { text-align:center; margin-top:36px; padding-top:16px; border-top:2px solid #006400; font-size:0.95rem; }
+
+    @media (max-width:900px) {
+      .nav-list { flex-wrap:wrap; gap:12px; }
+      .main-content { font-size:0.95rem; }
+
+      /* Reduce container padding on smaller screens */
+      .container { padding-left:20px; padding-right:20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar"></div>
+
+    <header class="header">
+      <h1 class="site-title">Anzila Laikhuram</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html" class="active">Research</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="talks.html">Talks</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="section">
+        <h3>Research Statement</h3>
+        <p>My research focuses on the <strong>Inverse Eigenvalue Problem for Graphs (IEPG)</strong> and the broader class of <strong>Inverse 
+          Eigenvalue Problems for Symmetric matrices (IEPS)</strong>. 
+          I investigate which spectra can be realized by real symmetric matrices whose 
+          zero-nonzero patterns are constrained by an underlying graph structure. This includes 
+          studying spectral properties, multiplicities, and the interplay between combinatorial structures and algebraic invariants of graphs. A major goal of my work is to provide constructive methods to realize prescribed spectra. I combine combinatorial techniques 
+          (zero forcing, strong spectral property (SSP), strong multiplicity property (SMP), strong Arnold property (SAP)) with algebraic 
+          and matrix-theoretic methods. All constructions and validations are carefully verified using <strong>Python and SageMath</strong>. 
+          Code and notebooks are available on my <a href="https://github.com/anzi7" target="_blank">GitHub</a>. I am also interested on extremal spectral graph theory, matrix inertia, eigenvalue multiplicity obstructions, and algorithmic approaches for spectral invariants, with applications to network analysis and combinatorial optimization.</p>
+      </section>
+
+      <section class="section">
+        <h3>Publications</h3>
+        <div class="pub-item">
+          <strong>[1]</strong> <strong>A. Laikhuram</strong>, J. C.-H. Lin. 
+          <em>Inverse eigenvalue problem for discrete Schrödinger operators of a graph</em>, 
+          Linear Algebra Appl. (2025).<br>
+          <a href="https://doi.org/10.1016/j.laa.2025.10.030" target="_blank">
+            doi:10.1016/j.laa.2025.10.030
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>Ongoing Work</h3>
+        <ul class="list-compact">
+          <li>Matrix construction for inverse eigenvalue realizations using Python and SageMath</li>
+          <li>Multiplicity obstructions via SSP / SMP / SAP</li>
+          <li>Algorithms for spectral graph invariants and extremal problems</li>
+          <li>Codes and notebooks: <a href="https://github.com/anzi7" target="_blank">GitHub</a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>Thesis</h3>
+        <p><strong>Ph.D. Dissertation:</strong> 
+          <em>Spectral characterization and matrix construction in the inverse eigenvalue problem for discrete Schrödinger operators on a graph</em><br>
+          <span style="color:#555;">(Link will be available soon)</span>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Anzila Laikhuram</p>
+    </footer>
+  </div>
+</body>
+</html>

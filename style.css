@@ -1,0 +1,206 @@
+/* === Base & Variables === */
+:root {
+  --text: #1a1a1a;
+  --bg: #f3f9f3;            /* soft, fresh sage green */
+  --accent: #064e03;        /* deep forest green */
+  --light-accent: #0a6b06;
+  --muted: #555;
+  --border: #d0e0d0;        /* harmonized green-gray border */
+  --max-width: 800px;
+  --gap: 24px;
+}
+
+/* === Reset & Base Styles === */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* === Header & Navigation === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--gap);
+}
+
+.site-title {
+  font-size: rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: var(--text);
+  font-weight: 500;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-decoration: none;
+}
+
+/* === Main Content Layout === */
+.main-content {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+}
+
+.profile-section {
+  flex-shrink: 0;
+  width: 250px;
+}
+
+.bio-section {
+  flex: 1;
+}
+
+/* === Profile Photo === */
+.profile-photo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: block;
+}
+
+/* === Typography & Content Styling === */
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.bio-section p {
+  margin-bottom: 1rem;
+}
+
+.contact {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.contact a {
+  color: var(--accent);
+}
+
+/* === Page Titles (for research, teaching, etc.) === */
+.page-title {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-title h2 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+.page-title .subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0.25rem 0 0;
+}
+
+/* === Lists === */
+.list-compact {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.list-compact li {
+  margin-bottom: 0.5rem;
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* === Responsive Design === */
+@media (max-width: 650px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-section {
+    width: 180px;
+  }
+
+  .profile-photo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .bio-section {
+    text-align: center;
+  }
+
+}
