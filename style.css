@@ -63,6 +63,7 @@ a:hover {
   color: var(--accent);
 }
 
+/* === Navigation === */
 .nav-list {
   list-style: none;
   display: flex;
@@ -79,6 +80,7 @@ a:hover {
 .nav-list a.active {
   color: var(--accent);
   border-bottom-color: var(--accent);
+  text-decoration: none;
 }
 
 /* === Main Layout === */
@@ -92,17 +94,19 @@ a:hover {
 .profile-section {
   flex-shrink: 0;
   width: 280px;
-  text-align: center;
+  text-align: center;  /* Only the photo area is centered */
 }
 
-/* === Profile Photo (Optimized) === */
+/* === Profile Photo === */
 .profile-photo {
   width: 260px;
   height: 260px;
   object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid var(--accent);
+  border-radius: 0;            /* square image like your HTML inline */
+  border: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  display: block;
+  margin: 0 auto;
 }
 
 /* === Biography Section === */
@@ -110,10 +114,12 @@ a:hover {
   flex: 1;
 }
 
+/* text inside bio: same alignment on all devices */
 .bio-section p,
 .bio-section span {
   margin-bottom: 1rem;
-  text-align: justify;         /* ⬅ All paragraphs aligned evenly on both sides */
+  text-align: justify;        /* ⬅ ensure both sides aligned (left+right) */
+  text-justify: inter-word;
 }
 
 /* === Divider === */
@@ -152,18 +158,26 @@ a:hover {
 
 /* === Responsive Design === */
 @media (max-width: 900px) {
-  .main-content {
+  .header {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
-  .bio-section {
-    text-align: justify;
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .main-content {
+    flex-direction: column;      /* stack photo above text */
+    align-items: stretch;        /* no global centering */
   }
 
   .profile-section {
     width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   .profile-photo {
@@ -171,9 +185,8 @@ a:hover {
     height: 200px;
   }
 
-  .nav-list {
-    flex-wrap: wrap;
-    justify-content: center;
+  .bio-section {
+    width: 100%;
   }
 
   .container {
@@ -183,11 +196,15 @@ a:hover {
 
 @media (max-width: 480px) {
   .profile-photo {
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 170px;
   }
 
   .site-title {
     font-size: 1.7rem;
+  }
+
+  .nav-list {
+    gap: 0.8rem;
   }
 }
