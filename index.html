@@ -3,113 +3,506 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Anzila Laikhuram — Home</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for Icons -->
+  <title>Anzila Laikhuram — Applied Mathematics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body { background-color: #f4f4f4; color: #000; font-family: Arial, sans-serif; margin:0; padding:0; }
-    a { color: #006400; text-decoration: none; font-weight: bold; }
-    a:hover { text-decoration: underline; }
 
-    /* Adjusted container padding for more margin on left and right */
-    .container {
-      width: 98%;
-      max-width: 1600px;
-      margin: 0 auto;
-      padding-left: 40px;   /* increased from 10px */
-      padding-right: 40px;  /* increased from 10px */
-      padding-top: 10px;
-      padding-bottom: 10px;
+  <style>
+    :root {
+      --forest:   #1c3829;
+      --forest-mid: #2a5240;
+      --forest-light: #3a7058;
+      --gold:     #c4a84f;
+      --gold-light: #dfc278;
+      --cream:    #f9f5ee;
+      --cream-dark: #f0ead8;
+      --ink:      #1a1a18;
+      --ink-soft: #3a3a36;
+      --ink-muted:#6b6b62;
+      --border:   rgba(28,56,41,0.18);
+      --white:    #ffffff;
+      --tag-bg:   rgba(28,56,41,0.08);
+      --shadow:   0 4px 32px rgba(28,56,41,0.10);
     }
 
-    .top-bar { height: 0.5px; background-color: #006400; width: 96%; margin: 2px auto 12px; }
-    .header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding-bottom:12px; border-bottom:2px solid #006400; }
-    .site-title { font-size:2.4rem; margin:0; }
-    .nav-list { list-style:none; display:flex; gap:20px; padding:0; margin:0; }
-    .nav-list a.active { text-decoration: underline; }
-    .main-content { display:flex; flex-wrap:wrap; margin-top:24px; gap:24px; }
-    .profile-section { flex:0 0 360px; }
-    .profile-photo { width:100%; max-width:360px; height:auto; object-fit:cover; border-radius:0; }
-    .bio-section { flex:1 1 800px; line-height:1.6; font-size:1rem; }
-    .bio-section span{ display:block; margin-bottom:8px; }
-    .divider { border-top:1px solid #ccc; margin:20px 0 12px; }
-    .contact-inline { display:flex; gap:18px; flex-wrap:wrap; font-size:0.95rem; align-items:center; }
-    .contact-inline a { color:#006400; display:flex; gap:8px; align-items:center; text-decoration:none; }
-    .footer { text-align:center; margin-top:36px; padding-top:16px; border-top:2px solid #006400; font-size:0.95rem; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    @media (max-width:900px) {
-      .main-content { flex-direction:column; align-items:center; }
-      .profile-section, .bio-section { flex:1 1 100%; }
-      .profile-photo { max-width:80%; }
-      .contact-inline { justify-content:center; }
+    html { scroll-behavior: smooth; }
 
-      /* Reduce container padding on smaller screens */
-      .container {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── PAGE FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--forest);
+      height: 5px;
+      width: 100%;
+    }
+
+    /* ── SITE WRAPPER ── */
+    .wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--forest);
+      text-decoration: none;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--forest); }
+    .nav-links a.active {
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 2px;
+    }
+
+    /* ── POSTDOC BANNER ── */
+    .postdoc-banner {
+      margin: 32px 0 0;
+      padding: 13px 22px;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow);
+    }
+    .postdoc-banner .dot {
+      width: 9px; height: 9px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(196,168,79,0.7); }
+      50%       { box-shadow: 0 0 0 6px rgba(196,168,79,0); }
+    }
+    .postdoc-banner p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.03em;
+    }
+    .postdoc-banner strong { color: var(--gold-light); }
+
+    /* ── MAIN LAYOUT ── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 52px;
+      margin: 44px 0;
+      align-items: start;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .left-col { position: sticky; top: 32px; }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 10px; left: 10px;
+      width: 100%; height: 100%;
+      border: 2px solid var(--gold);
+      border-radius: 2px;
+      z-index: 0;
+    }
+    .profile-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+      filter: grayscale(8%);
+      object-fit: cover;
+    }
+
+    /* Contact card */
+    .contact-card {
+      margin-top: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(28,56,41,0.07);
+    }
+    .contact-card-header {
+      background: var(--forest);
+      padding: 9px 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .contact-items { padding: 12px 0; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 8px 16px;
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s;
+    }
+    .contact-item:hover { background: var(--tag-bg); color: var(--forest); }
+    .contact-item i {
+      width: 18px;
+      text-align: center;
+      color: var(--forest-light);
+      font-size: 0.9rem;
+    }
+
+    /* ── RIGHT COLUMN ── */
+    .right-col { padding-top: 4px; }
+
+    .name-block {
+      margin-bottom: 26px;
+    }
+    .name-block h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--forest);
+      letter-spacing: -0.01em;
+    }
+    .name-block h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--forest-light);
+    }
+    .name-block .subtitle {
+      margin-top: 6px;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+    .subtitle a {
+      color: var(--forest-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(58,112,88,0.35);
+      transition: border-color 0.2s;
+    }
+    .subtitle a:hover { border-color: var(--forest-light); }
+
+    /* Section labels */
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(196,168,79,0.4), transparent);
+    }
+
+    /* Bio text */
+    .bio-text {
+      font-size: 1.08rem;
+      color: var(--ink-soft);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+    .bio-text a {
+      color: var(--forest-light);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(58,112,88,0.45);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .bio-text a:hover { color: var(--forest); border-color: var(--forest); border-style: solid; }
+    .bio-text strong { color: var(--ink); font-weight: 600; }
+
+    /* Education timeline */
+    .edu-section { margin: 32px 0; }
+    .edu-list { list-style: none; }
+    .edu-item {
+      display: flex;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(28,56,41,0.08);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-year {
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--gold);
+      width: 44px;
+      padding-top: 2px;
+      letter-spacing: 0.03em;
+    }
+    .edu-body { font-size: 0.98rem; color: var(--ink-soft); line-height: 1.55; }
+    .edu-body strong { color: var(--ink); font-weight: 600; }
+    .edu-body span { color: var(--ink-muted); font-size: 0.92rem; display: block; }
+
+    /* Research tags */
+    .research-section { margin: 32px 0; }
+    .tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 4px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 5px 14px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(28,56,41,0.15);
+      border-radius: 2px;
+      font-size: 0.88rem;
+      color: var(--forest);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .tag:hover { background: rgba(28,56,41,0.14); border-color: rgba(28,56,41,0.3); }
+    .tag.primary {
+      background: var(--forest);
+      color: var(--cream);
+      border-color: var(--forest);
+    }
+    .tag.primary:hover { background: var(--forest-mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+    footer a { color: var(--forest-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .wrapper { padding: 0 22px; }
+      .main-grid { grid-template-columns: 1fr; gap: 32px; }
+      .left-col { position: static; display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+      .photo-frame { width: 200px; flex-shrink: 0; }
+      .contact-card { flex: 1 1 200px; margin-top: 0; }
+      .name-block h1 { font-size: 2.4rem; }
+      nav { flex-direction: column; gap: 14px; }
+      .nav-links { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
+    }
+    @media (max-width: 520px) {
+      .photo-frame { width: 100%; }
+      .left-col { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="top-bar"></div>
 
-    <header class="header">
-      <h1 class="site-title">Anzila Laikhuram</h1>
-      <nav>
-        <ul class="nav-list">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="teaching.html">Teaching</a></li>
-          <li><a href="talks.html">Talks</a></li>
-          <li><a href="resources.html">Resources</a></li>
-        </ul>
-      </nav>
-    </header>
+  <div class="topbar"></div>
 
-    <main class="main-content">
-      <div class="profile-section">
-        <img src="anzi profile.JPG" alt="Anzila Laikhuram" class="profile-photo" loading="lazy">
+  <div class="wrapper">
 
-      </div>
+    <!-- NAV -->
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">A. Laikhuram</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
 
-      <div class="bio-section">
-        <span>Hello! I am currently a <strong>Ph.D. candidate in Applied Mathematics</strong> at
-          <a href="https://www.nsysu.edu.tw/en/" target="_blank">National Sun Yat-sen University, Taiwan</a>, enrolled in the
-          <a href="https://ipps.nsysu.edu.tw/en/" target="_blank">International PhD Program for Science (IPPS)</a>, expected to graduate in 2026,
-          under the supervision of <a href="https://jephianlin.github.io/" target="_blank">Jephian C.-H. Lin</a>, Associate Professor,
-          <a href="https://math.nsysu.edu.tw/en/" target="_blank">Department of Applied Mathematics, College of Science, NSYSU</a>.
+    <!-- POSTDOC AVAILABILITY BANNER -->
+    <div class="postdoc-banner fade-up delay-2">
+      <span class="dot"></span>
+      <p>Currently seeking <strong>Postdoctoral Positions</strong> in spectral graph theory, combinatorial matrix theory &amp; related areas · Available 2026 · Open to collaborations</p>
+    </div>
 
-      I earned an M.Sc. in Mathematics from <a href="https://www.sju.edu.in/" target="_blank">St. Joseph's University, India</a> (2017)
-          and a B.Sc. in Physics, Chemistry, and Mathematics from <a href="https://christuniversity.in/" target="_blank">Christ University, 
-            India</a> (2014).
+    <!-- MAIN GRID -->
+    <div class="main-grid">
 
-        Before my Ph.D., I completed formal teaching training and a <strong>Bachelor of Education (B.Ed)</strong>
-          from <a href="https://www.manipuruniv.ac.in/" target="_blank">Manipur University</a> (2025).</span>
-
-        <span>My research focuses on <strong>spectral graph theory, combinatorial matrix theory, and inverse eigenvalue problems of graphs (IEPG)</strong>.
-          I am also interested in extremal spectral graph theory, matrix inertia, algebraic graph invariants, and applications to network analysis.
-          I am currently seeking <strong>postdoctoral positions</strong> and open for collaborations in these areas.</span>
-
-        <div style="height: 80px;"></div>
-        <div class="divider"></div>
-        <div style="height: 30px;"></div>
-
-        <div class="contact-inline">
-          <a href="mailto:angi286@gmail.com"><i class="fas fa-envelope"></i> angi286[at]gmail.com</a>
-          <a href="https://github.com/anzi7" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-          <a href="Anzila_CV__2026.pdf" target="_blank"><i class="far fa-file-alt"></i> CV</a>
+      <!-- LEFT: PHOTO + CONTACT -->
+      <aside class="left-col fade-up delay-3">
+        <div class="photo-frame">
+          <img src="anzi profile.JPG" alt="Anzila Laikhuram" class="profile-photo" loading="lazy">
         </div>
-      </div>
-    </main>
 
-    <footer class="footer">
-      <p>© 2020 Anzila Laikhuram</p>
+        <div class="contact-card">
+          <div class="contact-card-header">Contact</div>
+          <div class="contact-items">
+            <a class="contact-item" href="mailto:angi286@gmail.com">
+              <i class="fas fa-envelope"></i> angi286[at]gmail.com
+            </a>
+            <a class="contact-item" href="https://github.com/anzy7" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a class="contact-item" href="Anzila_CV__2026.pdf" target="_blank">
+              <i class="far fa-file-alt"></i> Curriculum Vitae
+            </a>
+            <a class="contact-item" href="https://math.nsysu.edu.tw/en/" target="_blank">
+              <i class="fas fa-university"></i> NSYSU Mathematics
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: BIO -->
+      <main class="right-col fade-up delay-4">
+
+        <div class="name-block">
+          <h1>Anzila <em>Laikhuram</em></h1>
+          <p class="subtitle">
+            Ph.D. Candidate · <a href="https://math.nsysu.edu.tw/en/" target="_blank">Applied Mathematics, NSYSU</a> ·
+            <a href="https://ipps.nsysu.edu.tw/en/" target="_blank">IPPS Taiwan</a>
+          </p>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="section-label">About</div>
+        <p class="bio-text">
+          Hello! I am a <strong>Ph.D. candidate in Applied Mathematics</strong> at
+          <a href="https://www.nsysu.edu.tw/en/" target="_blank">National Sun Yat-sen University, Taiwan</a>,
+          enrolled in the <a href="https://ipps.nsysu.edu.tw/en/" target="_blank">International PhD Program for Science (IPPS)</a>,
+          expected to graduate in <strong>2026</strong>. I work under the supervision of
+          <a href="https://jephianlin.github.io/" target="_blank">Prof. Jephian C.-H. Lin</a>,
+          <a href="https://math.nsysu.edu.tw/en/" target="_blank">Department of Applied Mathematics, NSYSU</a>.
+        </p>
+        <p class="bio-text">
+          My research sits at the intersection of <strong>spectral graph theory</strong>,
+          <strong>combinatorial matrix theory</strong>, and the
+          <strong>inverse eigenvalue problem for graphs (IEPG)</strong>.
+          I am also drawn to extremal spectral graph theory, matrix inertia,
+          algebraic graph invariants, and applications to network analysis.
+        </p>
+
+        <!-- RESEARCH INTERESTS -->
+        <div class="research-section fade-up delay-5">
+          <div class="section-label">Research Interests</div>
+          <div class="tags-grid">
+            <span class="tag primary">Spectral Graph Theory</span>
+            <span class="tag primary">Inverse Eigenvalue Problems (IEPG)</span>
+            <span class="tag primary">Combinatorial Matrix Theory</span>
+            <span class="tag">Extremal Graph Theory</span>
+            <span class="tag">Matrix Inertia</span>
+            <span class="tag">Algebraic Graph Invariants</span>
+            <span class="tag">Zero Forcing</span>
+            <span class="tag">Network Analysis</span>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="edu-section fade-up delay-5">
+          <div class="section-label">Education</div>
+          <ul class="edu-list">
+            <li class="edu-item">
+              <span class="edu-year">2026</span>
+              <div class="edu-body">
+                <strong>Ph.D. in Applied Mathematics</strong> <em>(expected)</em>
+                <span><a href="https://www.nsysu.edu.tw/en/" target="_blank">National Sun Yat-sen University</a>, Taiwan</span>
+                <span>Advisor: <a href="https://jephianlin.github.io/" target="_blank">Jephian C.-H. Lin</a></span>
+              </div>
+            </li>
+            <li class="edu-item">
+              <span class="edu-year">2025</span>
+              <div class="edu-body">
+                <strong>Bachelor of Education (B.Ed.)</strong>
+                <span><a href="https://www.manipuruniv.ac.in/" target="_blank">Manipur University</a>, India</span>
+              </div>
+            </li>
+            <li class="edu-item">
+              <span class="edu-year">2017</span>
+              <div class="edu-body">
+                <strong>M.Sc. in Mathematics</strong>
+                <span><a href="https://www.sju.edu.in/" target="_blank">St. Joseph's University</a>, India</span>
+              </div>
+            </li>
+            <li class="edu-item">
+              <span class="edu-year">2014</span>
+              <div class="edu-body">
+                <strong>B.Sc. in Physics, Chemistry &amp; Mathematics</strong>
+                <span><a href="https://christuniversity.in/" target="_blank">Christ University</a>, India</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </main>
+    </div><!-- end main-grid -->
+
+    <!-- FOOTER -->
+    <footer class="fade-up delay-5">
+      <span>© 2025 Anzila Laikhuram</span>
+      <span>Department of Applied Mathematics · <a href="https://www.nsysu.edu.tw/en/" target="_blank">NSYSU</a>, Taiwan</span>
     </footer>
-  </div>
+
+  </div><!-- end wrapper -->
 </body>
 </html>
-
-
