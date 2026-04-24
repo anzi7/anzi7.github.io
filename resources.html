@@ -4,123 +4,378 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Resources — Anzila Laikhuram</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    body { background-color:#f4f4f4; color:#000; font-family:Arial, sans-serif; margin:0; padding:0; }
-    a { color:#006400; text-decoration:none; font-weight:bold; }
-    a:hover { text-decoration:underline; }
+    :root {
+      --forest:      #1c3829;
+      --forest-mid:  #2a5240;
+      --forest-light:#3a7058;
+      --gold:        #c4a84f;
+      --gold-light:  #dfc278;
+      --cream:       #f9f5ee;
+      --cream-dark:  #f0ead8;
+      --ink:         #1a1a18;
+      --ink-soft:    #3a3a36;
+      --ink-muted:   #6b6b62;
+      --border:      rgba(28,56,41,0.18);
+      --white:       #ffffff;
+      --tag-bg:      rgba(28,56,41,0.08);
+      --shadow:      0 4px 32px rgba(28,56,41,0.10);
+    }
 
-    .container { width:98%; max-width:1600px; margin:0 auto; padding:10px 40px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-    .header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding-bottom:12px; border-bottom:2px solid #006400; }
-    .site-title { font-size:2.4rem; margin:0; }
-    .nav-list { list-style:none; display:flex; gap:20px; padding:0; margin:0; }
-    .nav-list a.active { text-decoration:underline; }
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
 
-    .page-title { margin-top:24px; margin-bottom:16px; }
-    .page-title h2 { font-size:2rem; margin:0; }
-    .page-title .subtitle { color:#555; margin-top:6px; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
 
-    .columns { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:30px; }
-    .section h3 { color:#006400; margin-bottom:8px; font-size:1.3rem; }
-    .list-compact { padding-left:15px; margin:0; }
-    .list-compact li { margin-bottom:6px; }
+    .topbar { background: var(--forest); height: 5px; width: 100%; }
 
-    .footer { text-align:center; margin-top:36px; padding-top:16px; border-top:2px solid #006400; font-size:0.95rem; }
+    .wrapper { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
 
-    @media (max-width:900px) {
-      .container { padding:10px 20px; }
-      .columns { grid-template-columns: 1fr; }
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--forest);
+      text-decoration: none;
+    }
+    .nav-links { list-style: none; display: flex; gap: 28px; }
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--forest); }
+    .nav-links a.active { border-bottom: 1.5px solid var(--gold); padding-bottom: 2px; }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin: 44px 0 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.0rem;
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .page-header h1 em { font-style: italic; font-weight: 300; color: var(--forest-light); }
+    .page-header .lead { margin-top: 10px; font-size: 1.05rem; color: var(--ink-muted); max-width: 700px; }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(196,168,79,0.4), transparent);
+    }
+
+    /* RESOURCE GRID */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    /* RESOURCE CARD */
+    .resource-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(28,56,41,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .resource-card:hover {
+      box-shadow: 0 6px 26px rgba(28,56,41,0.13);
+      transform: translateY(-2px);
+    }
+    .card-header {
+      background: var(--forest);
+      padding: 11px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-header i {
+      color: var(--gold-light);
+      font-size: 0.95rem;
+      width: 18px;
+      text-align: center;
+    }
+    .card-header span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .card-body { padding: 6px 0 8px; }
+
+    /* RESOURCE LINK */
+    .res-link {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 9px 18px;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(28,56,41,0.06);
+      transition: background 0.18s, color 0.18s;
+    }
+    .res-link:last-child { border-bottom: none; }
+    .res-link:hover { background: var(--tag-bg); color: var(--forest); }
+    .res-link i {
+      color: var(--forest-light);
+      font-size: 0.82rem;
+      width: 14px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+    footer a { color: var(--forest-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .wrapper { padding: 0 22px; }
+      .resource-grid { grid-template-columns: 1fr; }
+      .page-header h1 { font-size: 2.3rem; }
+      nav { flex-direction: column; gap: 14px; }
+      .nav-links { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1 class="site-title">Anzila Laikhuram</h1>
-      <nav>
-        <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="teaching.html">Teaching</a></li>
-          <li><a href="talks.html">Talks</a></li>
-          <li><a href="resources.html" class="active">Resources</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <div class="page-title">
-      <h2>Resources</h2>
-      <div class="subtitle">Books, Python, LaTeX, and Math Resources</div>
+  <div class="topbar"></div>
+
+  <div class="wrapper">
+
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">A. Laikhuram</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="resources.html" class="active">Resources</a></li>
+      </ul>
+    </nav>
+
+    <div class="page-header fade-up delay-2">
+      <h1>Re<em>sources</em></h1>
+      <p class="lead">A curated collection of books, computational tools, LaTeX references, and mathematical societies useful for researchers in algebra and combinatorics.</p>
     </div>
 
-    <main class="columns">
-      <!-- Free Books PDFs -->
-      <section>
-        <h3>Free Books & PDFs</h3>
-        <ul class="list-compact">
-          <li><a href="https://aeb.win.tue.nl/2WF02/spectra.pdf" target="_blank">Spectra of Graphs</a></li>
-          <li><a href="https://hefferon.net/linearalgebra/" target="_blank">Linear Algebra</a></li>
-          <li><a href="https://math.arizona.edu/~kglasner/math443/Graphs_and_Matrices_text.pdf" target="_blank">Graphs and Matrices</a></li>
-          <li><a href="https://courses.cs.duke.edu/spring09/cps102/Lectures/Book.pdf" target="_blank">Discrete Mathematics for CS</a></li>
-        </ul>
-      </section>
+    <!-- SECTION LABEL above grid -->
+    <div class="section-label fade-up delay-3" style="margin-bottom: 22px;">Curated Links</div>
 
-      <!-- Python Resources -->
-      <section>
-        <h3>Python Resources</h3>
-        <ul class="list-compact">
-          <li><a href="https://jakevdp.github.io/WhirlwindTourOfPython/" target="_blank">A Whirlwind Tour of Python</a></li>
-          <li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank">Python Data Science Handbook</a></li>
-          <li><a href="https://github.com/anzi7" target="_blank">Sage + Python Scripts (GitHub)</a></li>
-        </ul>
-      </section>
+    <div class="resource-grid">
 
-      <!-- LaTeX Templates -->
-      <section>
-        <h3>LaTeX Templates</h3>
-        <ul class="list-compact">
-          <li><a href="https://www.overleaf.com/latex/templates" target="_blank">Overleaf Templates</a></li>
-          <li><a href="https://quickref.me/latex.html" target="_blank">LaTeX Cheatsheet</a></li>
-        </ul>
-      </section>
+      <!-- FREE BOOKS -->
+      <div class="resource-card fade-up delay-3">
+        <div class="card-header">
+          <i class="fas fa-book-open"></i>
+          <span>Free Books &amp; PDFs</span>
+        </div>
+        <div class="card-body">
+          <a class="res-link" href="https://aeb.win.tue.nl/2WF02/spectra.pdf" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Spectra of Graphs
+          </a>
+          <a class="res-link" href="https://hefferon.net/linearalgebra/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Linear Algebra — Hefferon
+          </a>
+          <a class="res-link" href="https://math.arizona.edu/~kglasner/math443/Graphs_and_Matrices_text.pdf" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Graphs and Matrices
+          </a>
+          <a class="res-link" href="https://courses.cs.duke.edu/spring09/cps102/Lectures/Book.pdf" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Discrete Mathematics for CS
+          </a>
+        </div>
+      </div>
 
-      <!-- Other Useful Links -->
-      <section>
-        <h3>Other Useful Links</h3>
-        <ul class="list-compact">
-          <li><a href="https://www.sagemath.org/" target="_blank">SageMath</a></li>
-          <li><a href="https://www.python.org/" target="_blank">Python</a></li>
-          <li><a href="https://www.latex-project.org/" target="_blank">LaTeX Project</a></li>
-          <li><a href="https://www.scilab.org/" target="_blank">Scilab</a></li>
-          <li><a href="https://www.mathworks.com/products/matlab.html" target="_blank">MATLAB</a></li>
-          <li><a href="https://cocalc.com/" target="_blank">COCALC</a></li>
-        </ul>
-      </section>
+      <!-- PYTHON -->
+      <div class="resource-card fade-up delay-3">
+        <div class="card-header">
+          <i class="fab fa-python"></i>
+          <span>Python Resources</span>
+        </div>
+        <div class="card-body">
+          <a class="res-link" href="https://jakevdp.github.io/WhirlwindTourOfPython/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> A Whirlwind Tour of Python
+          </a>
+          <a class="res-link" href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Python Data Science Handbook
+          </a>
+          <a class="res-link" href="https://github.com/anzy7" target="_blank">
+            <i class="fab fa-github"></i> Sage + Python Scripts (GitHub)
+          </a>
+        </div>
+      </div>
 
-      <!-- Math Societies / Forums -->
-      <!-- Math Societies / Forums -->
-<section>
-  <h3>Math Societies & Forums</h3>
-  <ul class="list-compact">
-    <li><a href="https://www.europeanwomeninmaths.org/" target="_blank">EMS</a></li>
-    <li><a href="https://awm-math.org/" target="_blank">AWMS</a></li>
-    <li><a href="https://www.ams.org/" target="_blank">AMS</a></li>
-    <li><a href="https://www.siam.org/" target="_blank">SIAM</a></li>
-    <li><a href="https://ilas2026.math.vt.edu/" target="_blank">ILAS</a></li>
-    <li><a href="https://www.genealogy.math.ndsu.nodak.edu/" target="_blank">MathGenealogy</a></li>
-    <li><a href="https://mathscinet.ams.org/" target="_blank">MathSciNet</a></li>
-    <li><a href="https://ncts.ntu.edu.tw/" target="_blank">NCTS</a></li>
-  </ul>
-</section>
+      <!-- LATEX -->
+      <div class="resource-card fade-up delay-4">
+        <div class="card-header">
+          <i class="fas fa-file-code"></i>
+          <span>LaTeX Templates</span>
+        </div>
+        <div class="card-body">
+          <a class="res-link" href="https://www.overleaf.com/latex/templates" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Overleaf Templates
+          </a>
+          <a class="res-link" href="https://quickref.me/latex.html" target="_blank">
+            <i class="fas fa-external-link-alt"></i> LaTeX Cheatsheet
+          </a>
+        </div>
+      </div>
 
+      <!-- COMPUTATIONAL TOOLS -->
+      <div class="resource-card fade-up delay-4">
+        <div class="card-header">
+          <i class="fas fa-calculator"></i>
+          <span>Computational Tools</span>
+        </div>
+        <div class="card-body">
+          <a class="res-link" href="https://www.sagemath.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> SageMath
+          </a>
+          <a class="res-link" href="https://www.python.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Python
+          </a>
+          <a class="res-link" href="https://cocalc.com/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> CoCalc
+          </a>
+          <a class="res-link" href="https://www.scilab.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Scilab
+          </a>
+          <a class="res-link" href="https://www.mathworks.com/products/matlab.html" target="_blank">
+            <i class="fas fa-external-link-alt"></i> MATLAB
+          </a>
+        </div>
+      </div>
 
+      <!-- MATH SOCIETIES -->
+      <div class="resource-card fade-up delay-4">
+        <div class="card-header">
+          <i class="fas fa-users"></i>
+          <span>Math Societies &amp; Forums</span>
+        </div>
+        <div class="card-body">
+          <a class="res-link" href="https://www.ams.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> AMS
+          </a>
+          <a class="res-link" href="https://www.siam.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> SIAM
+          </a>
+          <a class="res-link" href="https://ilas2026.math.vt.edu/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> ILAS
+          </a>
+          <a class="res-link" href="https://awm-math.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> AWM
+          </a>
+          <a class="res-link" href="https://www.europeanwomeninmaths.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> European Women in Maths
+          </a>
+          <a class="res-link" href="https://ncts.ntu.edu.tw/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> NCTS
+          </a>
+        </div>
+      </div>
 
-    </main>
+      <!-- DATABASES -->
+      <div class="resource-card fade-up delay-5">
+        <div class="card-header">
+          <i class="fas fa-database"></i>
+          <span>Math Databases</span>
+        </div>
+        <div class="card-body">
+          <a class="res-link" href="https://mathscinet.ams.org/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> MathSciNet
+          </a>
+          <a class="res-link" href="https://www.genealogy.math.ndsu.nodak.edu/" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Mathematics Genealogy Project
+          </a>
+          <a class="res-link" href="https://arxiv.org/list/math.CO/recent" target="_blank">
+            <i class="fas fa-external-link-alt"></i> arXiv · Combinatorics
+          </a>
+          <a class="res-link" href="https://arxiv.org/list/math.SP/recent" target="_blank">
+            <i class="fas fa-external-link-alt"></i> arXiv · Spectral Theory
+          </a>
+        </div>
+      </div>
 
-    <footer class="footer">
-      <p>© 2025 Anzila Laikhuram</p>
+    </div><!-- end resource-grid -->
+
+    <footer class="fade-up delay-5">
+      <span>© 2026 Anzila Laikhuram</span>
+      <span>Department of Applied Mathematics · <a href="https://www.nsysu.edu.tw/en/" target="_blank">NSYSU</a>, Taiwan</span>
     </footer>
+
   </div>
 </body>
 </html>
