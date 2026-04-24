@@ -4,113 +4,548 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Talks — Anzila Laikhuram</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { background-color:#f4f4f4; color:#000; font-family:Arial, sans-serif; margin:0; padding:0; }
-    a { color:#006400; text-decoration:none; font-weight:bold; }
-    a:hover { text-decoration:underline; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    .container {
-      width:98%;
-      max-width:1600px;
-      margin:0 auto;
-      padding-left:40px;
-      padding-right:40px;
-      padding-top:10px;
-      padding-bottom:10px;
+  <style>
+    :root {
+      --forest:      #1c3829;
+      --forest-mid:  #2a5240;
+      --forest-light:#3a7058;
+      --gold:        #c4a84f;
+      --gold-light:  #dfc278;
+      --cream:       #f9f5ee;
+      --cream-dark:  #f0ead8;
+      --ink:         #1a1a18;
+      --ink-soft:    #3a3a36;
+      --ink-muted:   #6b6b62;
+      --border:      rgba(28,56,41,0.18);
+      --white:       #ffffff;
+      --tag-bg:      rgba(28,56,41,0.08);
+      --shadow:      0 4px 32px rgba(28,56,41,0.10);
     }
 
-    .header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding-bottom:12px; border-bottom:2px solid #006400; }
-    .site-title { font-size:2.4rem; margin:0; }
-    .nav-list { list-style:none; display:flex; gap:20px; padding:0; margin:0; }
-    .nav-list a.active { text-decoration:underline; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-    .page-title { margin-top:24px; margin-bottom:16px; }
-    .page-title h2 { font-size:2rem; margin:0; }
-    .page-title .subtitle { color:#555; margin-top:6px; }
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
 
-    .main-content { line-height:1.6; font-size:1rem; display:flex; flex-direction:column; gap:26px; margin-top:8px; }
-    .section h3 { color:#006400; margin-bottom:10px; font-size:1.3rem; }
-    .list-compact { padding-left:20px; }
-    .list-compact li { margin-bottom:10px; }
-    .footer { text-align:center; margin-top:36px; padding-top:16px; border-top:2px solid #006400; font-size:0.95rem; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
 
-    @media (max-width:900px) {
-      .nav-list { flex-wrap:wrap; gap:12px; }
-      .main-content { font-size:0.95rem; }
-      .container { padding-left:20px; padding-right:20px; }
+    .topbar { background: var(--forest); height: 5px; width: 100%; }
+
+    .wrapper { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--forest);
+      text-decoration: none;
+    }
+    .nav-links { list-style: none; display: flex; gap: 28px; }
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--forest); }
+    .nav-links a.active { border-bottom: 1.5px solid var(--gold); padding-bottom: 2px; }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin: 44px 0 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.0rem;
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .page-header h1 em { font-style: italic; font-weight: 300; color: var(--forest-light); }
+    .page-header .lead { margin-top: 10px; font-size: 1.05rem; color: var(--ink-muted); max-width: 700px; }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(196,168,79,0.4), transparent);
+    }
+
+    /* CONTENT GRID */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .section { margin-bottom: 48px; }
+
+    /* TALK CARD */
+    .talk-card {
+      display: flex;
+      gap: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(28,56,41,0.05);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .talk-card:hover {
+      box-shadow: 0 5px 22px rgba(28,56,41,0.12);
+      transform: translateY(-1px);
+    }
+    .talk-date-bar {
+      flex-shrink: 0;
+      width: 72px;
+      background: var(--forest);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 8px;
+      text-align: center;
+    }
+    .talk-date-bar .year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.0rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .talk-date-bar .month-day {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: rgba(249,245,238,0.65);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+    .talk-body {
+      padding: 14px 18px;
+      flex: 1;
+    }
+    .talk-type {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .talk-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .talk-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(28,56,41,0.3);
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .talk-title a:hover { color: var(--forest); border-color: var(--forest); border-style: solid; }
+    .talk-venue {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+    .talk-venue strong { color: var(--ink-soft); font-weight: 600; }
+
+    /* UPCOMING BLOCK */
+    .upcoming-block {
+      background: var(--cream-dark);
+      border: 1px dashed rgba(28,56,41,0.22);
+      border-radius: 4px;
+      padding: 20px 22px;
+      font-size: 0.98rem;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+    .upcoming-block strong { color: var(--forest); font-style: normal; display: block; margin-bottom: 6px; }
+
+    /* SIDEBAR */
+    .sidebar { position: sticky; top: 32px; display: flex; flex-direction: column; gap: 20px; }
+
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(28,56,41,0.07);
+    }
+    .sidebar-card-header {
+      background: var(--forest);
+      padding: 9px 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .sidebar-card-body { padding: 14px 16px; }
+
+    .sidebar-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(28,56,41,0.08);
+      font-size: 0.92rem;
+    }
+    .sidebar-stat:last-child { border-bottom: none; }
+    .stat-label { color: var(--ink-muted); }
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .venue-list { list-style: none; }
+    .venue-item {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(28,56,41,0.07);
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.45;
+    }
+    .venue-item:last-child { border-bottom: none; }
+    .venue-item .vi-country {
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+    footer a { color: var(--forest-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .wrapper { padding: 0 22px; }
+      .content-grid { grid-template-columns: 1fr; gap: 32px; }
+      .sidebar { position: static; }
+      .page-header h1 { font-size: 2.3rem; }
+      nav { flex-direction: column; gap: 14px; }
+      .nav-links { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
+    }
+    @media (max-width: 520px) {
+      .talk-date-bar { width: 58px; }
+      .talk-date-bar .year { font-size: 0.88rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header class="header">
-      <h1 class="site-title">Anzila Laikhuram</h1>
-      <nav>
-        <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="teaching.html">Teaching</a></li>
-          <li><a href="talks.html" class="active">Talks</a></li>
-          <li><a href="resources.html">Resources</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <!-- Page Title -->
-    <div class="page-title">
-      <h2>Talks</h2>
-      <div class="subtitle">Conferences, Workshops, and Seminars</div>
+  <div class="topbar"></div>
+
+  <div class="wrapper">
+
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">A. Laikhuram</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="talks.html" class="active">Talks</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+
+    <div class="page-header fade-up delay-2">
+      <h1>Tal<em>ks</em></h1>
+      <p class="lead">Conferences, workshops, and seminars — presenting work on spectral graph theory and inverse eigenvalue problems.</p>
     </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
+    <div class="content-grid">
 
-      <!-- Conferences -->
-      <section class="section">
-        <h3>Conferences</h3>
-        <ul class="list-compact">
-          <li>[August 4–5, 2025] <strong>32nd New-Sprout Symposium for Young Combinatorists</strong>, Fu Jen University, Taiwan — <a href="https://sites.google.com/view/youngcomb2025/" target="_blank">Inverse eigenvalue problem for discrete Schrödinger operators of a graph</a></li>
-          <li>[June 23–27, 2025] <strong>The 26th ILAS Conference</strong>, NSYSU, Taiwan — <a href="https://ilas2025.tw/program/mini/" target="_blank">Mini-symposium: Graphs and matrices in honor of Leslie Hogben's retirement</a></li>
-          <li>[January 9–12, 2023] <strong>NCTS East Asia Core Doctoral Forum</strong>, NTU, Taiwan — <a href="https://ncts.ntu.edu.tw/templet3/index.php?nid=359&bid=15" target="_blank">Nonnegative inverse eigenvalue problem for graphs</a></li>
-         
-        </ul>
-      </section>
+      <!-- MAIN -->
+      <div>
 
-      <!-- Workshops -->
-      <section class="section">
-        <h3>Workshops</h3>
-        <ul class="list-compact">
-          <li>[July 7–11, 2025] <strong>IPPS International Academic Courses</strong>, NSYSU, Taiwan — <a href="https://ipps.nsysu.edu.tw/en/activities/" target="_blank">Poster: Inverse eigenvalue problem for discrete Schrödinger operators of a graph</a></li>
-          <li>[January 16, 2025] <strong>2025 Make Science Easy!</strong>, IPPS, NSYSU, Taiwan — <a href="https://ipps.nsysu.edu.tw/en/activities/27/" target="_blank">Inverse eigenvalue problem of graphs</a></li>
-         <li>[November 29, 2024] <strong>TCUS – 2024 Student Research Forum</strong>, National Chung Hsing University, Taiwan — <a href="https://oia.nchu.edu.tw/index.php/1-2-news-en/1-2-news-en" target="_blank">Nonnegative inverse eigenvalue problem</a></li>
-         </ul>
-      </section>
+        <!-- CONFERENCES -->
+        <section class="section fade-up delay-3">
+          <div class="section-label">Conferences</div>
 
-      <!-- Seminars -->
-      <section class="section">
-        <h3>Seminars</h3>
-        <ul class="list-compact">
-          
-          <li>[May 4, 2023] <strong>Math Runway Series 2022</strong>, NSYSU, Taiwan — <a href="https://hackmd.io/@jephianlin/math-runway-2022" target="_blank">The contributions of Indian mathematicians</a></li>
-          <li>[December 21, 2021] <strong>TWAG Study Group Seminar</strong>, NSYSU, Taiwan — <a href="https://sites.google.com/site/twagstudygroup/archive/seminar-2022-fall" target="_blank">Equiangular lines and eigenvalue multiplicities</a></li>
-          <li>[October 10, 2022] <strong>TWAG Study Group Seminar</strong>, NSYSU, Taiwan — <a href="https://sites.google.com/site/twagstudygroup/archive/seminar-2022-fall" target="_blank">Inverse eigenvalue problem for symmetric doubly stochastic matrices</a></li>
-          <li>[March 2015] <strong>Introduction to Social Network Analysis</strong>, Department of Computer Science, St. Joseph’s University, India</li>
-        </ul>
-      </section>
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2025</span>
+              <span class="month-day">Aug<br>4–5</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Conference Talk</div>
+              <div class="talk-title">
+                <a href="https://sites.google.com/view/youngcomb2025/" target="_blank">Inverse eigenvalue problem for discrete Schrödinger operators of a graph</a>
+              </div>
+              <div class="talk-venue"><strong>32nd New-Sprout Symposium for Young Combinatorists</strong> · Fu Jen University, Taiwan</div>
+            </div>
+          </div>
 
-      <!-- Upcoming Talks -->
-      <section class="section">
-        <h3>Upcoming Talks</h3>
-        <p>Details for upcoming talks will be available soon.</p>
-      </section>
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2025</span>
+              <span class="month-day">Jun<br>23–27</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Conference Talk</div>
+              <div class="talk-title">
+                <a href="https://ilas2025.tw/program/mini/" target="_blank">Mini-symposium: Graphs and matrices in honor of Leslie Hogben's retirement</a>
+              </div>
+              <div class="talk-venue"><strong>The 26th ILAS Conference</strong> · NSYSU, Taiwan</div>
+            </div>
+          </div>
 
-    </main>
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2023</span>
+              <span class="month-day">Jan<br>9–12</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Conference Talk</div>
+              <div class="talk-title">
+                <a href="https://ncts.ntu.edu.tw/templet3/index.php?nid=359&bid=15" target="_blank">Nonnegative inverse eigenvalue problem for graphs</a>
+              </div>
+              <div class="talk-venue"><strong>NCTS East Asia Core Doctoral Forum</strong> · NTU, Taiwan</div>
+            </div>
+          </div>
+        </section>
 
-    <footer class="footer">
-      <p>© 2025 Anzila Laikhuram</p>
+        <!-- WORKSHOPS -->
+        <section class="section fade-up delay-3">
+          <div class="section-label">Workshops</div>
+
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2025</span>
+              <span class="month-day">Jul<br>7–11</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Poster</div>
+              <div class="talk-title">
+                <a href="https://ipps.nsysu.edu.tw/en/activities/" target="_blank">Inverse eigenvalue problem for discrete Schrödinger operators of a graph</a>
+              </div>
+              <div class="talk-venue"><strong>IPPS International Academic Courses</strong> · NSYSU, Taiwan</div>
+            </div>
+          </div>
+
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2025</span>
+              <span class="month-day">Jan<br>16</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Workshop Talk</div>
+              <div class="talk-title">
+                <a href="https://ipps.nsysu.edu.tw/en/activities/27/" target="_blank">Inverse eigenvalue problem of graphs</a>
+              </div>
+              <div class="talk-venue"><strong>2025 Make Science Easy!</strong> · IPPS, NSYSU, Taiwan</div>
+            </div>
+          </div>
+
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2024</span>
+              <span class="month-day">Nov<br>29</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Workshop Talk</div>
+              <div class="talk-title">
+                <a href="https://oia.nchu.edu.tw/index.php/1-2-news-en/1-2-news-en" target="_blank">Nonnegative inverse eigenvalue problem</a>
+              </div>
+              <div class="talk-venue"><strong>TCUS – 2024 Student Research Forum</strong> · National Chung Hsing University, Taiwan</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SEMINARS -->
+        <section class="section fade-up delay-4">
+          <div class="section-label">Seminars</div>
+
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2023</span>
+              <span class="month-day">May<br>4</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Seminar</div>
+              <div class="talk-title">
+                <a href="https://hackmd.io/@jephianlin/math-runway-2022" target="_blank">The contributions of Indian mathematicians</a>
+              </div>
+              <div class="talk-venue"><strong>Math Runway Series 2022</strong> · NSYSU, Taiwan</div>
+            </div>
+          </div>
+
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2022</span>
+              <span class="month-day">Oct<br>10</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Seminar</div>
+              <div class="talk-title">
+                <a href="https://sites.google.com/site/twagstudygroup/archive/seminar-2022-fall" target="_blank">Inverse eigenvalue problem for symmetric doubly stochastic matrices</a>
+              </div>
+              <div class="talk-venue"><strong>TWAG Study Group Seminar</strong> · NSYSU, Taiwan</div>
+            </div>
+          </div>
+
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2021</span>
+              <span class="month-day">Dec<br>21</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Seminar</div>
+              <div class="talk-title">
+                <a href="https://sites.google.com/site/twagstudygroup/archive/seminar-2022-fall" target="_blank">Equiangular lines and eigenvalue multiplicities</a>
+              </div>
+              <div class="talk-venue"><strong>TWAG Study Group Seminar</strong> · NSYSU, Taiwan</div>
+            </div>
+          </div>
+
+          <div class="talk-card">
+            <div class="talk-date-bar">
+              <span class="year">2015</span>
+              <span class="month-day">Mar</span>
+            </div>
+            <div class="talk-body">
+              <div class="talk-type">Seminar</div>
+              <div class="talk-title">Introduction to Social Network Analysis</div>
+              <div class="talk-venue"><strong>Department of Computer Science</strong> · St. Joseph's University, India</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- UPCOMING -->
+        <section class="section fade-up delay-5">
+          <div class="section-label">Upcoming</div>
+          <div class="upcoming-block">
+            <strong>Upcoming Talks</strong>
+            Details for upcoming talks and invitations will be posted here as they are confirmed.
+          </div>
+        </section>
+
+      </div><!-- end main -->
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar fade-up delay-3">
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Talk Summary</div>
+          <div class="sidebar-card-body">
+            <div class="sidebar-stat">
+              <span class="stat-label">Conferences</span>
+              <span class="stat-value">3</span>
+            </div>
+            <div class="sidebar-stat">
+              <span class="stat-label">Workshops</span>
+              <span class="stat-value">3</span>
+            </div>
+            <div class="sidebar-stat">
+              <span class="stat-label">Seminars</span>
+              <span class="stat-value">4</span>
+            </div>
+            <div class="sidebar-stat">
+              <span class="stat-label">Countries</span>
+              <span class="stat-value">2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Venues</div>
+          <div class="sidebar-card-body" style="padding: 10px 16px;">
+            <ul class="venue-list">
+              <li class="venue-item">Fu Jen University <span class="vi-country">· Taiwan</span></li>
+              <li class="venue-item">NSYSU (multiple) <span class="vi-country">· Taiwan</span></li>
+              <li class="venue-item">NTU — NCTS Forum <span class="vi-country">· Taiwan</span></li>
+              <li class="venue-item">Nat. Chung Hsing Univ. <span class="vi-country">· Taiwan</span></li>
+              <li class="venue-item">St. Joseph's University <span class="vi-country">· India</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: var(--cream-dark); border: 1px solid var(--border); border-radius:4px; padding:16px 18px; font-size:0.92rem; color:var(--ink-soft); line-height:1.6;">
+          <strong style="color:var(--forest); display:block; margin-bottom:6px;">Invite Me</strong>
+          Interested in having me give a talk? Contact me at
+          <a href="mailto:angi286@gmail.com" style="color:var(--forest-light); text-decoration:none; border-bottom:1px dashed rgba(58,112,88,0.4);">angi286[at]gmail.com</a>
+        </div>
+
+      </aside>
+    </div><!-- end grid -->
+
+    <footer class="fade-up delay-5">
+      <span>© 2026 Anzila Laikhuram</span>
+      <span>Department of Applied Mathematics · <a href="https://www.nsysu.edu.tw/en/" target="_blank">NSYSU</a>, Taiwan</span>
     </footer>
+
   </div>
 </body>
 </html>
