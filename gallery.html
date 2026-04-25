@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — Anzila Laikhuram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --forest:      #1c3829;
+      --forest-mid:  #2a5240;
+      --forest-light:#3a7058;
+      --gold:        #c4a84f;
+      --gold-light:  #dfc278;
+      --cream:       #f9f5ee;
+      --cream-dark:  #f0ead8;
+      --ink:         #1a1a18;
+      --ink-soft:    #3a3a36;
+      --ink-muted:   #6b6b62;
+      --border:      rgba(28,56,41,0.18);
+      --white:       #ffffff;
+      --shadow:      0 4px 32px rgba(28,56,41,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+
+    .topbar { background: var(--forest); height: 5px; width: 100%; }
+
+    .wrapper { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--forest);
+      text-decoration: none;
+    }
+    .nav-links { list-style: none; display: flex; gap: 28px; }
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--forest); }
+    .nav-links a.active { border-bottom: 1.5px solid var(--gold); padding-bottom: 2px; }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin: 44px 0 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.0rem;
+      font-weight: 600;
+      color: var(--forest);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .page-header h1 em { font-style: italic; font-weight: 300; color: var(--forest-light); }
+    .page-header .lead { margin-top: 10px; font-size: 1.05rem; color: var(--ink-muted); max-width: 700px; }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(196,168,79,0.4), transparent);
+    }
+
+    .section { margin-bottom: 52px; }
+
+    /* PHOTO GRID */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .photo-card {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(28,56,41,0.06);
+      cursor: pointer;
+      transition: box-shadow 0.22s, transform 0.22s;
+    }
+    .photo-card:hover {
+      box-shadow: 0 6px 26px rgba(28,56,41,0.15);
+      transform: translateY(-3px);
+    }
+    .photo-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .photo-card:hover img { transform: scale(1.04); }
+
+    .photo-card .photo-caption {
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 20, 14, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 880px;
+      width: 100%;
+    }
+    .lightbox-inner img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 3px;
+      display: block;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--gold-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(28,56,41,0.7);
+      border: none;
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .lightbox-nav:hover { background: rgba(28,56,41,0.95); }
+    .lightbox-nav.prev { left: -56px; }
+    .lightbox-nav.next { right: -56px; }
+
+    .lightbox-caption {
+      text-align: center;
+      color: rgba(249,245,238,0.65);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+    footer a { color: var(--forest-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .wrapper { padding: 0 22px; }
+      .photo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+      .photo-card img { height: 160px; }
+      .page-header h1 { font-size: 2.3rem; }
+      nav { flex-direction: column; gap: 14px; }
+      .nav-links { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
+      .lightbox-nav.prev { left: -2px; }
+      .lightbox-nav.next { right: -2px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar"></div>
+
+  <div class="wrapper">
+
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">A. Laikhuram</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+      </ul>
+    </nav>
+
+    <div class="page-header fade-up delay-2">
+      <h1>Gal<em>lery</em></h1>
+      <p class="lead">Snapshots from travels, conferences, and food adventures — life beyond the blackboard.</p>
+    </div>
+
+    <!-- TRIPS -->
+    <section class="section fade-up delay-3">
+      <div class="section-label">Travels &amp; Places</div>
+      <div class="photo-grid" id="trips-grid">
+
+        <div class="photo-card" onclick="openLightbox('trips', 0)">
+          <img src="photo1.jpg" alt="Travel photo 1" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('trips', 1)">
+          <img src="photo2.jpg" alt="Travel photo 2" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('trips', 2)">
+          <img src="photo3.jpg" alt="Travel photo 3" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('trips', 3)">
+          <img src="photo4.jpg" alt="Travel photo 4" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('trips', 4)">
+          <img src="photo5.jpg" alt="Travel photo 5" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('trips', 5)">
+          <img src="photo6.jpg" alt="Travel photo 6" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOD -->
+    <section class="section fade-up delay-4">
+      <div class="section-label">Food &amp; Flavours</div>
+      <div class="photo-grid" id="food-grid">
+
+        <div class="photo-card" onclick="openLightbox('food', 0)">
+          <img src="photo7.jpg" alt="Food photo 1" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('food', 1)">
+          <img src="photo8.jpg" alt="Food photo 2" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('food', 2)">
+          <img src="photo9.jpg" alt="Food photo 3" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('food', 3)">
+          <img src="photo10.jpg" alt="Food photo 4" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('food', 4)">
+          <img src="photo11.jpg" alt="Food photo 5" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('food', 5)">
+          <img src="photo12.jpg" alt="Food photo 6" loading="lazy">
+          <div class="photo-caption">Add your caption here</div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="fade-up delay-5">
+      <span>© 2026 Anzila Laikhuram</span>
+      <span>Department of Applied Mathematics · <a href="https://www.nsysu.edu.tw/en/" target="_blank">NSYSU</a>, Taiwan</span>
+    </footer>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightboxBtn()"><i class="fas fa-times"></i></button>
+      <button class="lightbox-nav prev" onclick="stepLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-nav next" onclick="stepLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const galleries = {
+      trips: Array.from(document.querySelectorAll('#trips-grid .photo-card')).map(c => ({
+        src: c.querySelector('img').src,
+        caption: c.querySelector('.photo-caption').textContent
+      })),
+      food: Array.from(document.querySelectorAll('#food-grid .photo-card')).map(c => ({
+        src: c.querySelector('img').src,
+        caption: c.querySelector('.photo-caption').textContent
+      }))
+    };
+
+    let currentGallery = 'trips';
+    let currentIndex = 0;
+
+    function openLightbox(gallery, index) {
+      currentGallery = gallery;
+      currentIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('open');
+    }
+
+    function updateLightbox() {
+      const item = galleries[currentGallery][currentIndex];
+      document.getElementById('lightbox-img').src = item.src;
+      document.getElementById('lightbox-caption').textContent = item.caption;
+    }
+
+    function stepLightbox(dir) {
+      const len = galleries[currentGallery].length;
+      currentIndex = (currentIndex + dir + len) % len;
+      updateLightbox();
+    }
+
+    function closeLightboxBtn() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+
+    function closeLightbox(e) {
+      if (e.target === document.getElementById('lightbox')) {
+        document.getElementById('lightbox').classList.remove('open');
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'ArrowRight') stepLightbox(1);
+      if (e.key === 'ArrowLeft') stepLightbox(-1);
+      if (e.key === 'Escape') closeLightboxBtn();
+    });
+  </script>
+
+</body>
+</html>
